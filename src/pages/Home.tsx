@@ -18,6 +18,9 @@ const Home: React.FC = () => {
        <IonButton>
          Play
        </IonButton>
+       <IonButton>
+         Stats
+       </IonButton>
       </IonContent>
     </IonPage>
   );
