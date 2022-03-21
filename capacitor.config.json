@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "tca-scrabble",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
