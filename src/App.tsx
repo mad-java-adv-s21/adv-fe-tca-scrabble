@@ -2,7 +2,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
-import { SetupGame } from './pages/SetupGame'; 
+import { StatsPage } from './pages/StatsPage'; 
 import { Play } from './pages/Play'; 
 
 /* Core CSS required for Ionic components to work properly */
@@ -33,8 +33,8 @@ const App: React.FC = () => (
         <Route exact path="/home">
           <Home />
         </Route>
-        <Route exact path="/SetupGame">
-          <SetupGame />
+        <Route exact path="/StatsPage">
+          <StatsPage />
         </Route>
         <Route exact path="/Play">
           <Play />

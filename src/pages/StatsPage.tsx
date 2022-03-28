@@ -3,12 +3,12 @@ import './Home.css';
 
 
 
-export const SetupGame: React.FC = () => {
+export const StatsPage: React.FC = () => {
         return (
           <IonPage>
             <IonHeader>
               <IonToolbar>
-                <IonTitle>Scrabble</IonTitle>
+                <IonTitle>Stats</IonTitle>
               </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
@@ -17,6 +17,11 @@ export const SetupGame: React.FC = () => {
                   <IonTitle size="large">Blank</IonTitle>
                 </IonToolbar>
               </IonHeader>
+              <h2>High Score:</h2>
+              <h2>Low Score:</h2>
+              <h2>Longest Word:</h2>
+              <h2># of starts:</h2>
+              
              <IonButton>
                Setup
              </IonButton>
@@ -24,4 +29,4 @@ export const SetupGame: React.FC = () => {
           </IonPage>
         );
       };
-export default SetupGame; 
+export default StatsPage; 
