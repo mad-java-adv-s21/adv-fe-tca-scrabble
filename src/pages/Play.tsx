@@ -24,14 +24,16 @@ export const Play: React.FC = () => {
             <IonTextarea placeholder="Enter a player..." value={text} onIonChange={e => setText(e.detail.value!)}></IonTextarea>
           </IonItem>
           <h2>Choose Players</h2>
-     
-         
-             <IonButton 
-             href="/home">
-               Play
-             </IonButton>
-            </IonContent>
-          </IonPage>
+          <IonButton 
+              href="/home">
+              Back
+          </IonButton>
+          <IonButton 
+              href="/score">
+              Play
+          </IonButton>
+          </IonContent>
+        </IonPage>
         );
       };
 export default Play; 
