@@ -15,11 +15,17 @@ const Home: React.FC = () => {
             <IonTitle size="large">Blank</IonTitle>
           </IonToolbar>
         </IonHeader>
-       <IonButton>
+       <IonButton
+        href="/Play">
          Play
        </IonButton>
-       <IonButton>
+       <IonButton
+        href="/Stats">
          Stats
+       </IonButton>
+       <IonButton
+        href="/Score">
+         Score
        </IonButton>
       </IonContent>
     </IonPage>

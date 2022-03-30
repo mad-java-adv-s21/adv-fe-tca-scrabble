@@ -23,7 +23,7 @@ export const StatsPage: React.FC = () => {
               <h2># of starts:</h2>
               
              <IonButton>
-               Setup
+               Back
              </IonButton>
             </IonContent>
           </IonPage>

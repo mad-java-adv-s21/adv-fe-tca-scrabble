@@ -4,7 +4,7 @@ import './Home.css';
 
 
 
-export const Play: React.FC = () => {
+export const Score: React.FC = () => {
     const [text, setText] = useState<string>();
         return (
           <IonPage>
@@ -26,12 +26,11 @@ export const Play: React.FC = () => {
           <h2>Choose Players</h2>
      
          
-             <IonButton 
-             href="/home">
+             <IonButton>
                Play
              </IonButton>
             </IonContent>
           </IonPage>
         );
       };
-export default Play; 
+export default Score; 
