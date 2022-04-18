@@ -1,5 +1,5 @@
 import React, { useState } from 'react'; 
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonItemDivider, IonItem, IonTextarea, IonLabel, IonCheckbox  } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonItem, IonMenu, IonList, IonSplitPane } from '@ionic/react';
 import './Home.css';
 
 
@@ -10,7 +10,7 @@ export const Score: React.FC = () => {
           <IonPage>
             <IonHeader>
               <IonToolbar>
-                <IonTitle>Play</IonTitle>
+                <IonTitle>Score</IonTitle>
               </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
@@ -18,17 +18,24 @@ export const Score: React.FC = () => {
                 <IonToolbar>
                   <IonTitle size="large">Blank</IonTitle>
                 </IonToolbar>
+                
               </IonHeader>
-              <h2>Player Name</h2>
-          <IonItem>
-            <IonTextarea placeholder="Enter a player..." value={text} onIonChange={e => setText(e.detail.value!)}></IonTextarea>
-          </IonItem>
-          <h2>Choose Players</h2>
-     
-         
-             <IonButton>
-               Play
+             
+    
+            <h2>High Score: </h2> <input type="text" />
+            <h2>Low Score: </h2>  <input type="text" />
+            <h2>Longest Word: </h2> <input type="text" />
+   
+        
+            <br /><br />
+       
+             <IonButton >
+               Update Score
              </IonButton>
+             <IonButton
+                  href="/Home">
+                  Back
+            </IonButton>
             </IonContent>
           </IonPage>
         );

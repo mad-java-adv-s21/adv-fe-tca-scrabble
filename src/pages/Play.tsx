@@ -1,11 +1,14 @@
 import React, { useState } from 'react'; 
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonItemDivider, IonItem, IonTextarea, IonLabel, IonCheckbox  } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonItemDivider, IonItem, IonTextarea, IonLabel, IonCheckbox, IonList  } from '@ionic/react';
 import './Home.css';
 
 
 
+
 export const Play: React.FC = () => {
-    const [text, setText] = useState<string>();
+ 
+
+
         return (
           <IonPage>
             <IonHeader>
@@ -21,9 +24,15 @@ export const Play: React.FC = () => {
               </IonHeader>
               <h2>Player Name</h2>
           <IonItem>
-            <IonTextarea placeholder="Enter a player..." value={text} onIonChange={e => setText(e.detail.value!)}></IonTextarea>
+   
           </IonItem>
+          
           <h2>Choose Players</h2>
+          
+        
+  
+
+
           <IonButton 
               href="/home">
               Back
@@ -36,4 +45,5 @@ export const Play: React.FC = () => {
         </IonPage>
         );
       };
+    
 export default Play; 
