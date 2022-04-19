@@ -1,44 +1,26 @@
 import React, { useEffect, useState } from 'react'; 
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonItemDivider, IonItem, IonTextarea, IonInput, IonLabel, IonCheckbox, IonList  } from '@ionic/react';
 import './Home.css';
-import { gameResult } from '../App'; 
+import { gameResult, currentGame } from '../App'; 
 import { useHistory } from 'react-router-dom'; 
 
 
 
-interface PlayProps {
-    pastPlayers: string[]
-    , addGameResult: (r: gameResult) => void; 
 
+interface PlayProps {
+    addGameResult: (r: gameResult) => void; 
+    currentGame: currentGame; 
   }
 
+ export const Play: React.FC<PlayProps> = ({
+   addGameResult
+   , currentGame
+  }) => {
 
-
- export const Play: React.FC<PlayProps> = ({pastPlayers, addGameResult}) => {
-
-
-
-    const playersWithCheckedBoolean = pastPlayers.map(x => ({
-      name: x
-      , checked: false
-    }))
-
+  
     const history = useHistory(); 
 
-    const endGame = () => {
-
-      // add new game result 
-      addGameResult({
-        start: ""
-        , end: ""
-        , players: []
-        , winner: ""
-      }); 
-      // navigate to home 
-
-      history.push("/"); 
-    };
-    
+  
     
 
 
@@ -62,10 +44,7 @@ interface PlayProps {
           </IonItem>
           
          
-          <h2>Choose Players</h2>
-          {
-            playersWithCheckedBoolean.map(x => <p key={x.name}>{x.name} </p>)
-          }
+        
         
           
   
@@ -76,13 +55,15 @@ interface PlayProps {
               Back
           </IonButton>
           <IonButton 
-              href="/score">
+              href="/score"
+              
+              >
               
               Play
               
           </IonButton>
           <IonButton
-              onClick={endGame}
+              
           >
               Done
           </IonButton>

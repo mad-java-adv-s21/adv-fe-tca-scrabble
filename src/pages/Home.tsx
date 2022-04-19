@@ -1,6 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonImg, IonItem, IonText, IonThumbnail, IonLabel } from '@ionic/react';
 import './Home.css';
 import { gameResult } from '../App'; 
+import { useHistory } from 'react-router-dom'; 
 
 
 interface HomeProps {
@@ -10,6 +11,7 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({gameResults}) => {
 
+  const nav = useHistory(); 
   
   return (
     <IonPage>
@@ -29,17 +31,19 @@ const Home: React.FC<HomeProps> = ({gameResults}) => {
           </IonToolbar>
         </IonHeader>
        <IonButton
-        href="/Play">
-         Play
+            href="/play"
+            onClick={() => "/score"}
+            >
+            Play
        </IonButton>
 
        <IonButton
-        href="/Score">
-         Score
+            href="/Score">
+            Score
        </IonButton>
 
        <IonText>
-         Total Games Played: {gameResults.length}
+            Total Games Played: {gameResults.length}
        </IonText>
        
       
