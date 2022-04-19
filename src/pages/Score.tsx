@@ -36,6 +36,7 @@ export const Score: React.FC = () => {
                   href="/Home">
                   Back
             </IonButton>
+           
             </IonContent>
           </IonPage>
         );

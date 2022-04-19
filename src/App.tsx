@@ -1,6 +1,7 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { useState } from 'react'; 
 import  Home  from './pages/Home';
 import { Play } from './pages/Play'; 
 import { Score } from './pages/Score'; 
@@ -28,26 +29,110 @@ import './theme/variables.css';
 setupIonicReact();
 
 interface player {
-  name: string; 
+  name: string;
+  order: number;
 }
 
+export interface gameResult {
+  start: string;      // "2022-02-14T18:49:30"
+  end: string;        // "2022-02-14T18:59:30"
+  winner: string      // "Me"
+  players: player[]   
+
+  // tca-zombie-specific
+  expansions?: any[]
+  gameTurns?: any[];
+}
+
+const game1: gameResult = {
+  start: "2022-02-14T18:55:00"
+  , end: "2022-02-14T19:00:00"
+  , winner: "Me"
+  , players: [{ name: "Me", order: 1 }, { name: "Jack", order: 2 }, { name: "Taylor", order: 3 }]
+  , expansions: ["Santa", "Hunk/Hottie"]
+  , gameTurns: [
+      {
+          turnNumber: 1
+          , playerTurns: [
+              {
+                  player: "Me"
+                  , start: "2022-02-14T18:55:00"
+                  , end: "2022-02-14:18:55:10"
+                  , startingScore: 0
+                  , brains: 3
+                  , endingScore: 3
+                  , specialActions: [
+                      {
+                          dice: "Santa"
+                          , action: "Helmet"
+                          , value: 0
+                      }
+                      , {
+                          dice: "Hunk"
+                          , action: "Double Brains"
+                          , value: 2
+
+                      } 
+                      , {
+                          dice: "Hottie"
+                          , action: "Rescue"
+                          , value: -2
+                      }
+                  ]
+              }
+              , {
+                  player: "Jack"
+                  , start: "2022-02-14:18:55:10"
+                  //, ...
+                  
+              }
+          ]
+      }
+      //, {...}
+  ]
+};
+
+const game2: gameResult = {
+  start: "2022-02-14T19:05:00"
+  , end: "2022-02-14T19:35:00"
+  , winner: "Stephanie"
+  , players: [{ name: "Me", order: 1 }, { name: "Stephanie", order: 2 }]
+};
+
+let gameResults: gameResult[] = [
+  game1
+  , game2
+];
 
 
-const App: React.FC = () => (
 
-  //const [results, setResults] = useState(gameResults);
+const App: React.FC = () => {
+  
+  
+  const [results, setResults] = useState(gameResults); 
 
- //
-
-
+  const addGameResult = (singleGameResult: gameResult) => {
+     setResults([
+       ...results
+         , singleGameResult
+     ]);
+  };
+  
+  
+  return(
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route exact path="/Home">
-          <Home />
+          <Home 
+              gameResults={results}
+          />
         </Route>
         <Route exact path="/Play">
-          <Play />
+          <Play 
+            pastPlayers = {["Lizzi", "Steve", "Aaron"]}
+            addGameResult={addGameResult}
+          />
         </Route>
         <Route exact path="/Score">
           <Score />
@@ -58,6 +143,7 @@ const App: React.FC = () => (
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
-);
+  );
+};
 
 export default App;

@@ -1,13 +1,36 @@
 import React, { useEffect, useState } from 'react'; 
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonItemDivider, IonItem, IonTextarea, IonInput, IonLabel, IonCheckbox, IonList  } from '@ionic/react';
 import './Home.css';
+import { gameResult } from '../App'; 
+import { useHistory } from 'react-router-dom'; 
+
+
+interface PlayProps {
+    pastPlayers: string[]
+    , addGameResult: (r: gameResult) => void; 
+
+  }
 
 
 
+ export const Play: React.FC<PlayProps> = ({pastPlayers, addGameResult}) => {
 
- export const Play: React.FC = () => {
- 
 
+    const history = useHistory(); 
+
+    const endGame = () => {
+
+      // add new game result 
+      addGameResult({
+        start: ""
+        , end: ""
+        , players: []
+        , winner: ""
+      }); 
+      // navigate to home 
+
+      history.push("/"); 
+    };
     
     
 
@@ -33,18 +56,15 @@ import './Home.css';
           
          <IonList>
           <h2>Choose Players</h2>
-          <IonItem>
-            <IonLabel>Lizzi </IonLabel>
-            <IonCheckbox color="primary" checked slot="start"></IonCheckbox>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Kirsten </IonLabel>
-            <IonCheckbox color="primary" checked slot="start"></IonCheckbox>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Chris </IonLabel>
-            <IonCheckbox color="primary" checked slot="start"></IonCheckbox>
-          </IonItem>
+          {
+            pastPlayers.map(x => (
+              <IonItem>
+                  <IonLabel>{x} </IonLabel>
+                  <IonCheckbox color="primary" checked slot="start"></IonCheckbox>
+              </IonItem>
+            ))
+          }
+        
           
   
           </IonList>
@@ -55,10 +75,17 @@ import './Home.css';
           </IonButton>
           <IonButton 
               href="/score">
+              
               Play
+              
           </IonButton>
-          </IonContent>
-        </IonPage>
+          <IonButton
+              onClick={endGame}
+          >
+              Done
+          </IonButton>
+        </IonContent>
+      </IonPage>
         );
       };
     
