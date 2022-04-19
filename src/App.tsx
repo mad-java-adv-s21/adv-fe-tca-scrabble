@@ -3,8 +3,8 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { useState } from 'react'; 
 import  Home  from './pages/Home';
-import { Play } from './pages/Play'; 
 import { Score } from './pages/Score'; 
+import { Play } from './pages/Play'; 
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -141,17 +141,18 @@ const App: React.FC = () => {
               gameResults={results}
           />
         </Route>
-        <Route exact path="/Play">
-          <Play 
-            addGameResult={addGameResult}
-            currentGame={currentGame}
+        <Route exact path="/Score">
+          <Score
+            pastPlayers = {getUniquePlayers(results)}
+            setCurrentGame={setCurrentGame}
             
           />
         </Route>
-        <Route exact path="/Score">
-          <Score 
-            pastPlayers = {getUniquePlayers(results)}
-            setCurrentGame={setCurrentGame}
+        <Route exact path="/Play">
+          <Play 
+            currentGame={currentGame}
+            addGameResult={addGameResult}
+            
           />
         </Route>
         <Route exact path="/">

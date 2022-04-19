@@ -42,11 +42,11 @@ const Home: React.FC<HomeProps> = ({gameResults}) => {
             Score
        </IonButton>
 
-       <IonText>
+       <h3>
             Total Games Played: {gameResults.length}
-       </IonText>
+       </h3>
        
-      
+    
        
       </IonContent>
     </IonPage> 
