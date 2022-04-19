@@ -104,6 +104,8 @@ let gameResults: gameResult[] = [
   , game2
 ];
 
+const getUniquePlayers = (games: gameResult[]) => (
+  [...new Set(games.flatMap(x => x.players.map(y => y.name)))]);
 
 
 const App: React.FC = () => {
@@ -130,7 +132,7 @@ const App: React.FC = () => {
         </Route>
         <Route exact path="/Play">
           <Play 
-            pastPlayers = {["Lizzi", "Steve", "Aaron"]}
+            pastPlayers = {getUniquePlayers(results)}
             addGameResult={addGameResult}
           />
         </Route>

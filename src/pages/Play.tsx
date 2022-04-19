@@ -5,6 +5,7 @@ import { gameResult } from '../App';
 import { useHistory } from 'react-router-dom'; 
 
 
+
 interface PlayProps {
     pastPlayers: string[]
     , addGameResult: (r: gameResult) => void; 
@@ -15,6 +16,12 @@ interface PlayProps {
 
  export const Play: React.FC<PlayProps> = ({pastPlayers, addGameResult}) => {
 
+
+
+    const playersWithCheckedBoolean = pastPlayers.map(x => ({
+      name: x
+      , checked: false
+    }))
 
     const history = useHistory(); 
 
@@ -54,20 +61,15 @@ interface PlayProps {
             <IonButton>Add New Player</IonButton>
           </IonItem>
           
-         <IonList>
+         
           <h2>Choose Players</h2>
           {
-            pastPlayers.map(x => (
-              <IonItem>
-                  <IonLabel>{x} </IonLabel>
-                  <IonCheckbox color="primary" checked slot="start"></IonCheckbox>
-              </IonItem>
-            ))
+            playersWithCheckedBoolean.map(x => <p key={x.name}>{x.name} </p>)
           }
         
           
   
-          </IonList>
+          
 
           <IonButton 
               href="/home">
