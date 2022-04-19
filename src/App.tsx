@@ -1,7 +1,7 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import  Home  from './pages/Home';
 import { Play } from './pages/Play'; 
 import { Score } from './pages/Score'; 
 
@@ -27,6 +27,12 @@ import './theme/variables.css';
 
 setupIonicReact();
 
+interface player {
+  name: string; 
+}
+
+
+
 const App: React.FC = () => (
 
   //const [results, setResults] = useState(gameResults);
@@ -37,12 +43,10 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/home">
+        <Route exact path="/Home">
           <Home />
         </Route>
-        
         <Route exact path="/Play">
-
           <Play />
         </Route>
         <Route exact path="/Score">
