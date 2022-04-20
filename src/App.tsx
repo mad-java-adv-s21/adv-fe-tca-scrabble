@@ -39,9 +39,7 @@ export interface gameResult {
   winner: string      // "Me"
   players: player[]   
 
-  // tca-zombie-specific
-  expansions?: any[]
-  gameTurns?: any[];
+ 
 }
 
 export interface currentGame {
@@ -54,48 +52,7 @@ const game1: gameResult = {
   , end: "2022-02-14T19:00:00"
   , winner: "Me"
   , players: [{ name: "Me", order: 1 }, { name: "Luke", order: 2 }, { name: "Kirsten", order: 3 }]
-  , expansions: ["Santa", "Hunk/Hottie"]
-  , gameTurns: [
-      {
-          turnNumber: 1
-          , playerTurns: [
-              {
-                  player: "Me"
-                  , start: "2022-02-14T18:55:00"
-                  , end: "2022-02-14:18:55:10"
-                  , startingScore: 0
-                  , brains: 3
-                  , endingScore: 3
-                  , specialActions: [
-                      {
-                          dice: "Santa"
-                          , action: "Helmet"
-                          , value: 0
-                      }
-                      , {
-                          dice: "Hunk"
-                          , action: "Double Brains"
-                          , value: 2
-
-                      } 
-                      , {
-                          dice: "Hottie"
-                          , action: "Rescue"
-                          , value: -2
-                      }
-                  ]
-              }
-              , {
-                  player: "Jack"
-                  , start: "2022-02-14:18:55:10"
-                  //, ...
-                  
-              }
-          ]
-      }
-      //, {...}
-  ]
-};
+}
 
 const game2: gameResult = {
   start: "2022-02-14T19:05:00"
@@ -104,7 +61,7 @@ const game2: gameResult = {
   , players: [{ name: "Me", order: 1 }, { name: "Carly", order: 2 }]
 };
 
-let gameResults: gameResult[] = [
+const gameResults: gameResult[] = [
   game1
   , game2
 ];

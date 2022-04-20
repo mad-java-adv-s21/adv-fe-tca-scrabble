@@ -14,21 +14,14 @@ export const Play: React.FC<PlayProps> = ({
 
   const history = useHistory();
 
-  const endGame = (winningPlayer: string) => {
+  const endGame = () => {
 
     // Add the new game result to the app data.
-
-    const mappedPlayers = currentGame.player.map(x => ({
-      name: x 
-      , order: 0
-    }));
-    console.log(mappedPlayers);
-
     addGameResult({
-        start: currentGame.start
-        , end: new Date().toISOString()
-        , players: mappedPlayers
-        , winner: winningPlayer
+        start: ""
+        , end: ""
+        , players: []
+        , winner: ""
     });
 
     // Navigate Home.
@@ -51,14 +44,16 @@ export const Play: React.FC<PlayProps> = ({
         { currentGame.player.map(x => (
           <IonButton
             key={x}
-            onClick={() => endGame}
+           
             
           >
             {x} Won
           </IonButton>
         ))}
         <IonButton
-            onClick={() => history.push("/")}
+            onClick={endGame}
+            
+            
         >
           Done
         </IonButton>

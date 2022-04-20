@@ -31,16 +31,13 @@ const Home: React.FC<HomeProps> = ({gameResults}) => {
           </IonToolbar>
         </IonHeader>
        <IonButton
-            href="/play"
+            href="/score"
             onClick={() => "/score"}
             >
             Play
        </IonButton>
 
-       <IonButton
-            href="/Score">
-            Score
-       </IonButton>
+       
 
        <h3>
             Total Games Played: {gameResults.length}

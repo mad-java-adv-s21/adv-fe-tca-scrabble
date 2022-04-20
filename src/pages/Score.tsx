@@ -22,6 +22,26 @@ interface ScoreProps {
   
     const history = useHistory(); 
 
+    const startGame  = () => {
+
+      // set up players and start time 
+      setCurrentGame({
+        start: new Date().toISOString()
+        , player: [
+            pastPlayers[0] 
+            , pastPlayers[1]
+            , "kate" 
+        ]
+      });
+
+      // nav to play screen 
+      history.push("/play")
+
+    };  
+
+
+    
+
     
     
 
@@ -58,11 +78,10 @@ interface ScoreProps {
               Back
           </IonButton>
           <IonButton 
-              href="/Play"
-              
+              onClick={startGame}
               >
               
-              Play
+              Start
               
           </IonButton>
           
