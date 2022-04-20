@@ -58,7 +58,7 @@ interface ScoreProps {
               Back
           </IonButton>
           <IonButton 
-              href="/score"
+              href="/Play"
               
               >
               

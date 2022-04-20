@@ -53,7 +53,7 @@ const game1: gameResult = {
   start: "2022-02-14T18:55:00"
   , end: "2022-02-14T19:00:00"
   , winner: "Me"
-  , players: [{ name: "Me", order: 1 }, { name: "Jack", order: 2 }, { name: "Taylor", order: 3 }]
+  , players: [{ name: "Me", order: 1 }, { name: "Luke", order: 2 }, { name: "Kirsten", order: 3 }]
   , expansions: ["Santa", "Hunk/Hottie"]
   , gameTurns: [
       {
@@ -101,7 +101,7 @@ const game2: gameResult = {
   start: "2022-02-14T19:05:00"
   , end: "2022-02-14T19:35:00"
   , winner: "Stephanie"
-  , players: [{ name: "Me", order: 1 }, { name: "Stephanie", order: 2 }]
+  , players: [{ name: "Me", order: 1 }, { name: "Carly", order: 2 }]
 };
 
 let gameResults: gameResult[] = [
