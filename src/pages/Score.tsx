@@ -19,19 +19,44 @@ interface ScoreProps {
       name: x 
       , checked: false
     }))
+
+    const [availablePlayers, setAvailablePlayers] = useState(playersWithCheckedBoolean); 
+
+    const [newPlayerName, setNewPlayerName] = useState(""); 
   
     const history = useHistory(); 
 
+    const togglePlayerChecked = (p: any) => {
+        setAvailablePlayers(
+          availablePlayers.map(x=> ({
+            ...x
+            , checked: x === p ? !x.checked : x.checked
+          }))
+        ); 
+    };
+
+    const addNewPlayer = () => {
+      // add the new player to available players
+      setAvailablePlayers([
+        ...availablePlayers 
+        , {
+          name: newPlayerName
+          , checked: true
+        }
+      ]); 
+
+      // clear out the input control
+      setNewPlayerName(""); 
+    }; 
+
     const startGame  = () => {
+
+      
 
       // set up players and start time 
       setCurrentGame({
         start: new Date().toISOString()
-        , player: [
-            pastPlayers[0] 
-            , pastPlayers[1]
-            , "kate" 
-        ]
+        , player: availablePlayers.filter(x => x.checked).map(x => x.name)
       });
 
       // nav to play screen 
@@ -68,8 +93,40 @@ interface ScoreProps {
           <h3>
             Choose Players
           </h3>
+
+          <div>
+
+
+          <IonItem>
+            <IonLabel position="floating">
+              Enter Player Name
+            </IonLabel>
+            
+            <IonInput 
+              value={newPlayerName}
+              onIonChange={(e) => setNewPlayerName((e.target as any).value)}
+            ></IonInput>
+          </IonItem>
+          <IonButton
+            onClick={addNewPlayer}>
+            Add
+          </IonButton>
+
+
+          </div>
+          
           {
-            playersWithCheckedBoolean.map(x => <p key={x.name}>{x.name}</p>)
+            availablePlayers.map(x => ( 
+            <IonItem>
+              <IonLabel>
+                  {x.name} 
+              </IonLabel>
+              <IonCheckbox  
+                  checked={x.checked} 
+                  onIonChange={e => togglePlayerChecked(x)} 
+              />
+            </IonItem>)
+            )
           }
           
 

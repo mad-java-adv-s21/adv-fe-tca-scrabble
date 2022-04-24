@@ -41,15 +41,14 @@ export const Play: React.FC<PlayProps> = ({
             <IonTitle size="large">Play Game</IonTitle>
           </IonToolbar>
         </IonHeader>
-        { currentGame.player.map(x => (
-          <IonButton
-            key={x}
-           
-            
-          >
-            {x} Won
-          </IonButton>
-        ))}
+        
+
+          { currentGame.player.map(x => (
+            <p>
+              {x}
+            </p>
+          ))}
+        
         <IonButton
             onClick={endGame}
             
