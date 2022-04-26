@@ -8,11 +8,23 @@ interface HomeProps {
   gameResults: gameResult[]
 }
 
+const calculateHighestScoringWord = (gameResults : gameResult[]) => {
+    const ranked = [
+      ...gameResults
+    ].sort((a,b) => a.highestScoreValue < b.highestScoreValue ? 1 : -1);
+
+    return { 
+      word: ranked[0].highestScoreWord
+      , value: ranked[0].highestScoreValue
+    }
+}; 
 
 const Home: React.FC<HomeProps> = ({gameResults}) => {
 
   const nav = useHistory(); 
   
+  const hw = calculateHighestScoringWord(gameResults);
+
   return (
     <IonPage>
       <IonHeader>
@@ -41,8 +53,15 @@ const Home: React.FC<HomeProps> = ({gameResults}) => {
 
        <h3>
             Total Games Played: {gameResults.length}
+            
        </h3>
-       
+       <h3>
+            Highest Scoring Word: {hw.word}
+       </h3>
+
+       <h3>
+            Highest Scoring Word: {hw.value}
+       </h3>
     
        
       </IonContent>

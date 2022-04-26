@@ -34,9 +34,10 @@ interface player {
 }
 
 export interface gameResult {
-  start: string;      // "2022-02-14T18:49:30"
-  end: string;        // "2022-02-14T18:59:30"
-  winner: string      // "Me"
+  start: string;      
+  end: string;        
+  highestScoreWord: string;
+  highestScoreValue: number;      
   players: player[]   
 
  
@@ -45,19 +46,22 @@ export interface gameResult {
 export interface currentGame {
   start: string; 
   player: string[]; 
+  word: string[]; 
 }
 
 const game1: gameResult = {
-  start: "2022-02-14T18:55:00"
-  , end: "2022-02-14T19:00:00"
-  , winner: "Me"
+  start: "2022-02-14T11:55:00"
+  , end: "2022-02-14T13:00:00"
+  , highestScoreWord: "Question"
+  , highestScoreValue: 40
   , players: [{ name: "Me", order: 1 }, { name: "Luke", order: 2 }, { name: "Kirsten", order: 3 }]
 }
 
 const game2: gameResult = {
-  start: "2022-02-14T19:05:00"
-  , end: "2022-02-14T19:35:00"
-  , winner: "Stephanie"
+  start: "2022-03-14T12:05:00"
+  , end: "2022-03-14T14:35:00"
+  , highestScoreWord: "Occupation"
+  , highestScoreValue: 38
   , players: [{ name: "Me", order: 1 }, { name: "Carly", order: 2 }]
 };
 
@@ -73,15 +77,17 @@ const getUniquePlayers = (games: gameResult[]) => (
 const App: React.FC = () => {
   
   // App state as useState() until it gets unmanagable 
-  const [results, setResults] = useState(gameResults); 
+  const [results, setResults] = useState<gameResult[]>(gameResults); 
 
   const [currentGame, setCurrentGame] = useState<currentGame>({
     start: ""
     , player: []
+    , word: []
   }); 
 
 
   const addGameResult = (singleGameResult: gameResult) => {
+      console.log(results); 
      setResults([
        ...results
          , singleGameResult

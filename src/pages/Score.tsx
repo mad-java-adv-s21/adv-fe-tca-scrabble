@@ -57,19 +57,13 @@ interface ScoreProps {
       setCurrentGame({
         start: new Date().toISOString()
         , player: availablePlayers.filter(x => x.checked).map(x => x.name)
+        , word: []
       });
 
       // nav to play screen 
       history.push("/play")
 
     };  
-
-
-    
-
-    
-    
-
 
         return (
           <IonPage>
@@ -84,12 +78,7 @@ interface ScoreProps {
                   <IonTitle size="large">Blank</IonTitle>
                 </IonToolbar>
               </IonHeader>
-             
-          
          
-        
-        
-          
           <h3>
             Choose Players
           </h3>
