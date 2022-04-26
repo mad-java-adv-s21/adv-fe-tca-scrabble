@@ -21,7 +21,7 @@ const calculateHighestScoringWord = (gameResults : gameResult[]) => {
 
 const Home: React.FC<HomeProps> = ({gameResults}) => {
 
-  const nav = useHistory(); 
+  const history = useHistory(); 
   
   const hw = calculateHighestScoringWord(gameResults);
 
@@ -43,8 +43,7 @@ const Home: React.FC<HomeProps> = ({gameResults}) => {
           </IonToolbar>
         </IonHeader>
        <IonButton
-            href="/score"
-            onClick={() => "/score"}
+            onClick={() => history.push("/score")}
             >
             Play
        </IonButton>
