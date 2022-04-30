@@ -20,7 +20,7 @@ export const Play: React.FC<PlayProps> = ({
   const [longestWord, setLongestWord] = useState(""); 
   const [highScore, setHighScore] = useState(0); 
 
-  const endGame = () => {
+  const endGame = (winningPlayer: string) => {
 
     console.log(currentGame); 
 
@@ -58,9 +58,12 @@ export const Play: React.FC<PlayProps> = ({
         
 
           { currentGame.player.map(x => (
-            <p>
-              {x}
-            </p>
+            <IonButton
+              key={x}
+              onClick={() => endGame(x)}
+              >
+              {x} Won
+            </IonButton>
           ))}
 
         
@@ -94,9 +97,9 @@ export const Play: React.FC<PlayProps> = ({
             </IonItem>
 
             <IonButton
-              onClick={endGame}  
+              onClick={() => history.push("/")}  
             >
-              Done
+              Quit
           </IonButton>
 
           { currentGame.word.map(y => (

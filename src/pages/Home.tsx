@@ -62,7 +62,7 @@ const Home: React.FC<HomeProps> = ({gameResults}) => {
        </h3>
 
        <h3>
-            Highest Scoring Word: {hw.value}
+            Highest Scoring Value: {hw.value}
        </h3>
     
        
