@@ -28,9 +28,11 @@ export const Play: React.FC<PlayProps> = ({
     addGameResult({
         start: currentGame.start
         , end: new Date().toISOString()
+        , winner: winningPlayer
         , players: currentGame.player.map(x => ({
             name: x
             , order: 0
+           
         }))
         , highestScoreWord: longestWord
         , highestScoreValue: highScore

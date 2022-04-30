@@ -38,7 +38,8 @@ export interface gameResult {
   end: string;        
   highestScoreWord: string;
   highestScoreValue: number;      
-  players: player[]   
+  players: player[]
+  winner: string   
 
  
 }
@@ -55,6 +56,7 @@ const game1: gameResult = {
   , highestScoreWord: "Question"
   , highestScoreValue: 40
   , players: [{ name: "Me", order: 1 }, { name: "Luke", order: 2 }, { name: "Kirsten", order: 3 }]
+  , winner: "carly"
 }
 
 const game2: gameResult = {
@@ -63,6 +65,7 @@ const game2: gameResult = {
   , highestScoreWord: "Occupation"
   , highestScoreValue: 38
   , players: [{ name: "Me", order: 1 }, { name: "Carly", order: 2 }]
+  , winner: "Luke"
 };
 
 const gameResults: gameResult[] = [
@@ -102,6 +105,7 @@ const App: React.FC = () => {
         <Route exact path="/Home">
           <Home 
               gameResults={results}
+              pastPlayers = {getUniquePlayers(results)}
           />
         </Route>
         <Route exact path="/Score">

@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom';
 
 
 interface HomeProps {
-  gameResults: gameResult[]
+  gameResults: gameResult[];
+  pastPlayers: string[]; 
 }
 
 const calculateHighestScoringWord = (gameResults : gameResult[]) => {
@@ -19,14 +20,41 @@ const calculateHighestScoringWord = (gameResults : gameResult[]) => {
     }
 }; 
 
+const calculateLeaderBoard = (p: string[], r: gameResult[]) => {
+    
+  const lb = p.map(x => {
+    
+    const gamesThisPlayerHasPlayedIn = r.filter(y => y.players.some(z => z.name == x));
+    const gamesThisPlayerHasWon = gamesThisPlayerHasPlayedIn.filter(y => y.winner == x);
 
 
-const Home: React.FC<HomeProps> = ({gameResults}) => {
+    return {
+      name: x
+      , wins: gamesThisPlayerHasWon.length
+      , losses: gamesThisPlayerHasPlayedIn.length - gamesThisPlayerHasWon.length
+      , winningPercentage: (gamesThisPlayerHasWon.length / gamesThisPlayerHasPlayedIn.length).toFixed(2)
+    };
+  })
+   
+  
+
+    console.log("in leaderboard", lb); 
+}; 
+
+
+
+
+
+
+const Home: React.FC<HomeProps> = ({
+  gameResults
+  , pastPlayers}) => {
 
   const history = useHistory();
   
   const hw = calculateHighestScoringWord(gameResults);
 
+  const lb = calculateLeaderBoard(pastPlayers, gameResults); 
   return (
     <IonPage>
       <IonHeader>
