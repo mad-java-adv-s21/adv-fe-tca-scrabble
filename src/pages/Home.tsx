@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonImg, IonItem, IonText, IonThumbnail, IonLabel } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCol, IonRow, IonButton, IonImg, IonGrid, IonItem, IonText, IonThumbnail, IonLabel } from '@ionic/react';
 import './Home.css';
 import { gameResult } from '../App'; 
 import { useHistory } from 'react-router-dom'; 
@@ -39,6 +39,8 @@ const calculateLeaderBoard = (p: string[], r: gameResult[]) => {
   
 
     console.log("in leaderboard", lb); 
+
+    return lb; 
 }; 
 
 
@@ -72,6 +74,29 @@ const Home: React.FC<HomeProps> = ({
             
           </IonToolbar>
         </IonHeader>
+
+        <IonGrid>
+          {calculateLeaderBoard(pastPlayers, gameResults)
+          .sort((a, b) => b.winningPercentage.localeCompare(a.winningPercentage))
+          .map(x => (
+            <IonRow>
+              <IonCol>
+                {x.wins} 
+              </IonCol>
+              <IonCol>
+                {x.losses} 
+              </IonCol>
+              <IonCol>
+                {x.winningPercentage} 
+              </IonCol>
+              <IonCol>
+                {x.name} 
+              </IonCol>
+            </IonRow>
+          ))}
+
+
+        </IonGrid>
        <IonButton
            
             onClick={() => history.push("/score")}
