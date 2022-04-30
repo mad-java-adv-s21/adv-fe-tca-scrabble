@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCol, IonRow, IonButton, IonImg, IonGrid, IonItem, IonText, IonThumbnail, IonLabel } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonCard, IonCardContent, IonCardTitle, IonToolbar, IonCol, IonRow, IonButton, IonImg, IonGrid, IonItem, IonText, IonThumbnail, IonLabel } from '@ionic/react';
 import './Home.css';
 import { gameResult } from '../App'; 
 import { useHistory } from 'react-router-dom'; 
@@ -66,37 +66,20 @@ const Home: React.FC<HomeProps> = ({
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
+        <IonCard>
+          <IonCardContent>
       <IonImg src="assets/scrabbleLogo.jpeg"></IonImg>
-      
+      </IonCardContent>
+      </IonCard>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
+           
             
           </IonToolbar>
         </IonHeader>
 
-        <IonGrid>
-          {calculateLeaderBoard(pastPlayers, gameResults)
-          .sort((a, b) => b.winningPercentage.localeCompare(a.winningPercentage))
-          .map(x => (
-            <IonRow>
-              <IonCol>
-                {x.wins} 
-              </IonCol>
-              <IonCol>
-                {x.losses} 
-              </IonCol>
-              <IonCol>
-                {x.winningPercentage} 
-              </IonCol>
-              <IonCol>
-                {x.name} 
-              </IonCol>
-            </IonRow>
-          ))}
-
-
-        </IonGrid>
+      
+    
        <IonButton
            
             onClick={() => history.push("/score")}
@@ -104,8 +87,9 @@ const Home: React.FC<HomeProps> = ({
             Play
        </IonButton>
 
-       
-
+      <IonCard>
+        <IonCardContent>    
+       <IonCardTitle>Stats</IonCardTitle>
        <h3>
             Total Games Played: {gameResults.length}
             
@@ -117,8 +101,37 @@ const Home: React.FC<HomeProps> = ({
        <h3>
             Highest Scoring Value: {hw.value}
        </h3>
-    
-       
+       </IonCardContent>  
+       </IonCard> 
+
+      <IonCard>
+      <IonCardTitle>Leaderboard</IonCardTitle>
+      <IonCardContent>
+       <IonGrid>
+          {calculateLeaderBoard(pastPlayers, gameResults)
+          .sort((a, b) => b.winningPercentage.localeCompare(a.winningPercentage))
+          .map(x => (
+            <IonRow>
+              <IonCol>
+                {x.name} 
+              </IonCol>
+              <IonCol>
+                {x.wins} 
+              </IonCol>
+              <IonCol>
+                {x.losses} 
+              </IonCol>
+              <IonCol>
+                {x.winningPercentage} 
+              </IonCol>
+              
+            </IonRow>
+          ))}
+
+
+        </IonGrid>
+        </IonCardContent>
+        </IonCard>
       </IonContent>
     </IonPage> 
   );
