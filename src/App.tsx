@@ -1,10 +1,11 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react'; 
 import  Home  from './pages/Home';
 import { Score } from './pages/Score'; 
 import { Play } from './pages/Play'; 
+import localforage from 'localforage'; 
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -78,6 +79,26 @@ const getUniquePlayers = (games: gameResult[]) => (
 
 
 const App: React.FC = () => {
+
+  const loadGameResults = async () => {
+    try {
+      const r = await localforage.getItem<gameResult[]>("gameResults"); 
+      setResults(r ?? []); 
+    }
+
+    catch (err) {
+      console.log(err); 
+      setResults([]); 
+    }
+  }; 
+
+
+  useEffect(
+    () => {
+      loadGameResults(); 
+    }
+    , []
+  ); 
   
   // App state as useState() until it gets unmanagable 
   const [results, setResults] = useState<gameResult[]>(gameResults); 
@@ -89,12 +110,17 @@ const App: React.FC = () => {
   }); 
 
 
-  const addGameResult = (singleGameResult: gameResult) => {
-      console.log(results); 
-     setResults([
-       ...results
+  const addGameResult = async (singleGameResult: gameResult) => {
+      
+    const updatedResult = [
+      ...results
          , singleGameResult
-     ]);
+     ]; 
+
+     await localforage.setItem('gameResults', updatedResult); 
+
+
+     setResults(updatedResult);
   };
   
   
