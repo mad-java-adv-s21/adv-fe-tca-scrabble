@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'; 
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonItemDivider, IonItem, IonTextarea, IonInput, IonLabel, IonCheckbox, IonList  } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonCard, IonCardTitle, IonCardContent, IonToolbar, IonButton, IonItemDivider, IonItem, IonTextarea, IonInput, IonLabel, IonCheckbox, IonList  } from '@ionic/react';
 import './Home.css';
 import { gameResult, currentGame } from '../App'; 
 import { useHistory } from 'react-router-dom'; 
@@ -67,43 +67,43 @@ interface ScoreProps {
 
         return (
           <IonPage>
-            <IonHeader>
-              <IonToolbar>
-                <IonTitle>Update Scores</IonTitle>
-              </IonToolbar>
-            </IonHeader>
+            
             <IonContent fullscreen>
-              <IonHeader collapse="condense">
+              <IonHeader>
                 <IonToolbar>
-                  <IonTitle size="large">Blank</IonTitle>
+                
+                  <IonTitle size="large" id="players">Choose Players</IonTitle>
                 </IonToolbar>
               </IonHeader>
-         
-          <h3>
-            Choose Players
-          </h3>
-
-          <div>
-
-
-          <IonItem>
+         <IonCard>
+         <IonCardContent>
+            
+           
             <IonLabel position="floating">
-              Enter Player Name
+              Enter New Player Name
             </IonLabel>
             
-            <IonInput 
+            <IonInput class="newPlayerInput"
               value={newPlayerName}
               onIonChange={(e) => setNewPlayerName((e.target as any).value)}
             ></IonInput>
-          </IonItem>
+            </IonCardContent>
+          </IonCard>
           <IonButton
+            id="add"
             onClick={addNewPlayer}>
             Add
           </IonButton>
+            
+         
+          <div>
 
+
+        
+          
 
           </div>
-          
+          <IonCard>
           {
             availablePlayers.map(x => ( 
             <IonItem>
@@ -116,10 +116,12 @@ interface ScoreProps {
               />
             </IonItem>)
             )
+            
           }
           
-
+          </IonCard>
           <IonButton 
+              id="back"
               href="/home">
               Back
           </IonButton>
@@ -130,7 +132,7 @@ interface ScoreProps {
               Start
               
           </IonButton>
-          
+         
         </IonContent>
       </IonPage>
         );

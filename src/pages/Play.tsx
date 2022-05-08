@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonItem, IonLabel} from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonCard, IonToolbar, IonButton, IonInput, IonItem, IonLabel} from '@ionic/react';
 import { currentGame, gameResult } from '../App';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react'; 
@@ -44,15 +44,12 @@ export const Play: React.FC<PlayProps> = ({
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Play Game</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      
+     
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader >
           <IonToolbar>
-            <IonTitle size="large">Play Game</IonTitle>
+            <IonTitle size="large" id="playGame">Results</IonTitle>
           </IonToolbar>
 
           
@@ -61,6 +58,7 @@ export const Play: React.FC<PlayProps> = ({
 
           { currentGame.player.map(x => (
             <IonButton
+              id="player"
               key={x}
               onClick={() => endGame(x)}
               >
@@ -69,7 +67,7 @@ export const Play: React.FC<PlayProps> = ({
           ))}
 
         
-      
+      <IonCard>
         <IonItem>
             <IonLabel position="floating">
               Enter Longest Word
@@ -97,8 +95,9 @@ export const Play: React.FC<PlayProps> = ({
             </IonInput>
             
             </IonItem>
-
+            </IonCard>
             <IonButton
+              id="quit"
               onClick={() => history.push("/")}  
             >
               Quit

@@ -59,28 +59,24 @@ const Home: React.FC<HomeProps> = ({
   const lb = calculateLeaderBoard(pastPlayers, gameResults); 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Scrabble</IonTitle>
-         
-        </IonToolbar>
-      </IonHeader>
+     
       <IonContent fullscreen>
+      <IonHeader collapse="condense">
+      <IonToolbar>
+          
+          <IonTitle size="large" id="home">Home</IonTitle>
+        </IonToolbar>
+       </IonHeader>
         <IonCard>
           <IonCardContent>
       <IonImg src="assets/scrabbleLogo.jpeg"></IonImg>
       </IonCardContent>
       </IonCard>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-           
-            
-          </IonToolbar>
-        </IonHeader>
+        
 
       
     
-       <IonButton
+       <IonButton id="play"
            
             onClick={() => history.push("/score")}
             >
@@ -105,13 +101,23 @@ const Home: React.FC<HomeProps> = ({
        </IonCard> 
 
       <IonCard>
-      <IonCardTitle>Leaderboard</IonCardTitle>
       <IonCardContent>
+      <IonCardTitle>Leaderboard</IonCardTitle>
+      <br />
+      <IonGrid>
+
+        <IonCol>Name</IonCol>
+        <IonCol push=".5">Wins</IonCol>
+        <IonCol push="1">Losses</IonCol>
+        <IonCol push="1">Win Percentage</IonCol>
+      </IonGrid>
        <IonGrid>
           {calculateLeaderBoard(pastPlayers, gameResults)
           .sort((a, b) => b.winningPercentage.localeCompare(a.winningPercentage))
           .map(x => (
+            
             <IonRow>
+              
               <IonCol>
                 {x.name} 
               </IonCol>
@@ -127,7 +133,7 @@ const Home: React.FC<HomeProps> = ({
               
             </IonRow>
           ))}
-
+          
 
         </IonGrid>
         </IonCardContent>
