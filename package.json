@@ -2,6 +2,7 @@
   "name": "tca-scrabble",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://lizziluebke.github.io/adv-fe-tca-scrabble", 
   "dependencies": {
     "@capacitor/app": "1.1.1",
     "@capacitor/core": "3.4.3",

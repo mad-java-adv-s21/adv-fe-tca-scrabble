@@ -72,7 +72,7 @@ const Home: React.FC<HomeProps> = ({
       <IonImg src="assets/scrabbleLogo.jpeg"></IonImg>
       </IonCardContent>
       </IonCard>
-        
+        <h2>hello</h2>
 
       
     
