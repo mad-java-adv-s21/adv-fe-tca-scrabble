@@ -15,8 +15,8 @@ const calculateHighestScoringWord = (gameResults : gameResult[]) => {
     ].sort((a,b) => a.highestScoreValue < b.highestScoreValue ? 1 : -1);
 
     return { 
-      word: ranked[0].highestScoreWord
-      , value: ranked[0].highestScoreValue
+      word: ranked.length > 0 ? ranked[0].highestScoreWord : 0
+      , value: ranked.length > 0 ? ranked[0].highestScoreValue : 0
     }
 }; 
 
